@@ -1,0 +1,21 @@
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
+alias df='df -h'
+alias jobs='jobs -l'
+alias mv='mv -v'                           # Preferred 'mv' implementation
+alias cp='cp -v'
+alias mkdir='mkdir -pv'                     # Preferred 'mkdir' implementation
+alias cd..='cd ../'                         # Go back 1 directory level (for fast typers)
+alias ~="cd ~"                              # ~:            Go Home
+
+alias v="vim"
+
+# Git
+alias gd='git diff'
+alias gm='git commit -m'
+alias gss="git status -s"
+alias gs='git status'
+alias gb='git branch'
+alias ggg='git log --oneline --graph --decorate'
