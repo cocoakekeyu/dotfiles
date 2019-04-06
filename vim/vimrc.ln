@@ -19,10 +19,10 @@ set backspace=indent,eol,start
 colorscheme desert 
 
 "Python code can't exceed 80 char
-autocmd FileType python call Highlight_80()
-fun Highlight_80()
+autocmd FileType python call Highlight_120()
+fun Highlight_120()
   highlight OverLength ctermbg=red ctermfg=white guibg=#592929 
-  match OverLength /\%81v.\+/
+  match OverLength /\%121v.\+/
 endfun
 
 "Excellent buffer manager map
