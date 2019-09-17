@@ -19,3 +19,9 @@ alias gss="git status -s"
 alias gs='git status'
 alias gb='git branch'
 alias ggg='git log --oneline --graph --decorate'
+
+# VIM CONFIG SWITCH
+alias vim_local='ln -s -f ~/cocoakekeyu/dotfiles/vim/vimrc.ln  ~/.vimrc'
+alias vim_ifanr='ln -s -f ~/cocoakekeyu/dotfiles/vim/vimrc_ifanr.ln  ~/.vimrc'
+
+alias down_showdoc='scp zhixun:/showdoc_data/html/Sqlite/showdoc.db.php /showdoc_data/html/Sqlite/'
