@@ -1,11 +1,11 @@
 syntax on
 
-set nocompatible 
+set nocompatible
 set shiftwidth=4
 set tabstop=4
 set softtabstop=4
 set expandtab
-set nobackup 
+set nobackup
 set noswapfile
 set incsearch
 set hlsearch
@@ -16,13 +16,18 @@ set showmode
 set encoding=utf-8 fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,latin1
 set pastetoggle=<f5>
 set backspace=indent,eol,start
+set redrawtime=10000
 
-colorscheme desert 
+colorscheme desert
+
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
 
 "Python code can't exceed 120 char
 autocmd FileType python call Highlight_120()
 fun Highlight_120()
-  highlight OverLength ctermbg=red ctermfg=white guibg=#592929 
+  highlight OverLength ctermbg=red ctermfg=white guibg=#592929
   match OverLength /\%121v.\+/
 endfun
 
@@ -47,9 +52,13 @@ nnoremap <leader>s :Ack
 nnoremap <C-i> :NERDTreeToggle<CR>
 nnoremap <leader>q :TagbarToggle<CR>
 nnoremap <leader>p "+p
-nnoremap <leader>c  :!pandoc -f markdown --css=$HOME/markdown-css/github.css -t html -o /tmp/mdconvtmp.html %;google-chrome /tmp/mdconvtmp.html<CR>
+" nnoremap <leader>c  :!pandoc -f markdown --css=$HOME/markdown-css/github.css -t html -o /tmp/mdconvtmp.html %;google-chrome /tmp/mdconvtmp.html<CR>
 nnoremap <leader>d :YcmCompleter GoTo<CR>
-nnoremap <leader>g :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>f :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>g :GoDef<CR>
+nnoremap <leader>j :call append(line('.'), 'import ipdb;ipdb.set_trace()')<CR>
+nnoremap <leader>c :GoBuild<CR>
+nnoremap <leader>r :SyntasticReset<CR>
 
 
 let g:os = substitute(system('uname'), '\n', '', '')
@@ -81,8 +90,13 @@ Plugin 'bsdelf/bufferhint'
 " Plugin 'posva/vim-vue'
 " Plugin 'vim-ruby/vim-ruby'
 " Plugin 'tpope/vim-rails'
-Plugin 'majutsushi/tagbar'
+Plugin 'majutsushi/tagbar'              "a class outline viewer for Vim
 Plugin 'fatih/vim-go'
+Plugin 'tpope/vim-fugitive'             "Fugitive is the premier Vim plugin for Git
+Plugin 'benmills/vimux'                 "vim tmux interact
+Plugin 'sebdah/vim-delve'               "delve go调试(先安装 delve)
+Plugin 'ntpeters/vim-better-whitespace' "删除多余空格
+Plugin 'junegunn/gv.vim'                  "git commit brower
 
 call vundle#end()
 filetype plugin on
@@ -91,7 +105,6 @@ filetype plugin on
 "Use the_silver_searcher(ag) replace ack
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
-"let g:pyflakes_use_quickfix = 0
 let g:vim_markdown_folding_disabled=1
 
 "YCM
@@ -104,11 +117,12 @@ let g:ycm_semantic_triggers =  {
 			\ }
 
 let python_highlight_all = 1
+"let python_space_error_highlight = 0
 highlight PMenu ctermfg=0 ctermbg=7 guifg=black guibg=darkgrey
 highlight PMenuSel ctermfg=242 ctermbg=8 guifg=darkgrey guibg=black
 
 
-"Syntastic setting
+"Syntastic settings
 let g:syntastic_error_symbol='>>'       " 错误行使用'>>' 标记
 let g:syntastic_warning_symbol='>'      " 警告行使用'>' 标记
 "let g:syntastic_check_on_open=1     " 打开文件时即开启语法检查
@@ -119,3 +133,12 @@ let g:syntastic_python_checkers=['flake8']     " 设置Python检查规则为pyfl
 let g:syntastic_always_populate_loc_list = 0   " 提示内容显示相关
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_loc_list_height = 5
+
+"vim-go settings
+let g:go_def_mod_mode='godef'
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
+"let g:go_debug=["lsp"]     "vim-go gopls debug log
+
+"vim-delve settings
+let g:delve_use_vimux = 1

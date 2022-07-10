@@ -18,10 +18,21 @@ alias gm='git commit -m'
 alias gss="git status -s"
 alias gs='git status'
 alias gb='git branch'
-alias ggg='git log --oneline --graph --decorate'
+alias ggg="git log --graph --pretty=format:'%Cred%h%Creset - %Cgreen(%ad)%C(yellow)%d%Creset %s %C(bold blue)<%an>%Creset' --abbrev-commit --date=local"
 
-# VIM CONFIG SWITCH
-alias vim_local='ln -s -f ~/cocoakekeyu/dotfiles/vim/vimrc.ln  ~/.vimrc'
-alias vim_ifanr='ln -s -f ~/cocoakekeyu/dotfiles/vim/vimrc_ifanr.ln  ~/.vimrc'
-
-alias down_showdoc='scp zhixun:/showdoc_data/html/Sqlite/showdoc.db.php /showdoc_data/html/Sqlite/'
+alias setproxy="
+    export HTTP_PROXY=socks5://127.0.0.1:1080;
+    export HTTPS_PROXY=socks5://127.0.0.1:1080;
+    export ALL_PROXY=socks5://127.0.0.1:1080;
+    export http_proxy=socks5://127.0.0.1:1080;
+    export https_proxy=socks5://127.0.0.1:1080;
+    export all_proxy=socks5://127.0.0.1:1080;
+"
+alias unproxy="
+    unset HTTP_PROXY;
+    unset HTTPS_PROXY;
+    unset ALL_PROXY;
+    unset http_proxy;
+    unset https_proxy;
+    unset all_proxy;
+"
