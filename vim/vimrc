@@ -52,7 +52,6 @@ nnoremap <leader>s :Ack
 nnoremap <C-i> :NERDTreeToggle<CR>
 nnoremap <leader>q :TagbarToggle<CR>
 nnoremap <leader>p "+p
-" nnoremap <leader>c  :!pandoc -f markdown --css=$HOME/markdown-css/github.css -t html -o /tmp/mdconvtmp.html %;google-chrome /tmp/mdconvtmp.html<CR>
 nnoremap <leader>d :YcmCompleter GoTo<CR>
 nnoremap <leader>f :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>g :GoDef<CR>
@@ -109,7 +108,6 @@ let g:vim_markdown_folding_disabled=1
 
 "YCM
 let g:ycm_python_binary_path = 'python'
-let g:ycm_server_python_binary_path = '/Library/Frameworks/Python.framework/Versions/3.6/bin/python3'
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_semantic_triggers =  {
 			\ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
